@@ -30,3 +30,20 @@
 
 # Ignore .idea
 .idea
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+
+# about ._* Bad MacBook
+._*
+*/._*
+*/*/._*
+*/*/*/._*
+*/*/*/*/._*
+*/*/*/*/*/._*
+*/*/*/*/*/*/._*
+*/*/*/*/*/*/*/._*
