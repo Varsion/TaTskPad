@@ -1,0 +1,14 @@
+<% provide(:title, "用户信息") %>
+
+<div class="col-md-6 col-md-offset-3">
+
+	<h4>用户姓名</h4>
+	<%= @user.name %>
+	<h4>用户昵称</h4>
+	<%= @user.nickname %>
+	<h4>邮箱</h4>
+	<%= @user.email %>
+	<br>
+
+	<%= link_to "修改个人信息", edit_user_path(current_user), class:"btn btn-primary" %>
+</div>

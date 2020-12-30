@@ -15,4 +15,5 @@ class SessionsController < ApplicationController
 	def destroy
 		# 退出组织会话
 	end
+
 end

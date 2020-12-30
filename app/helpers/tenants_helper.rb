@@ -1,5 +1,10 @@
 module TenantsHelper
-	def is_admin?
-		# 查看当前用户在当前组织中是否是管理员 即 session.position = 0
+	def admin? tenant
+		position = Session.find_by(tenant_id: tenant, user_id: current_user.id).position
+		if position == 0
+			return true
+		else
+			return false
+		end
 	end
 end

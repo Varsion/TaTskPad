@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     post '/login' ,to: 'telnet#create'
     delete '/logout' ,to: 'telnet#destroy'
     get  '/signup',  to: 'users#new'
+    get '/verify', to: 'users#verify'
 
     resources :users
+    resources :tenants
 
 end

@@ -7,9 +7,15 @@ class TelnetController < ApplicationController
 	def create
 		user = User.find_by(email: params[:telnet][:email].downcase)
 
-	    if user && user.verify?(params[:telnet][:password])
-	    	log_in user
-	      	redirect_to root_url
+	    if user && user.authenticate(params[:telnet][:password])
+	    	if user.is_actived?
+	    		log_in user
+		    	flash[:success] = "Login Success"
+		      	redirect_to root_url
+	    	else
+	    		flash.now[:warning] = 'Account is not activated'
+	      		render 'new'
+	    	end
 	    else
 	    	flash.now[:danger] = 'Invalid email/password combination'
 	      	render 'new'
@@ -18,6 +24,7 @@ class TelnetController < ApplicationController
 
 	def destroy
 		log_out
+		flash[:success] = "Restore Success"
 		redirect_to root_url
 	end
 

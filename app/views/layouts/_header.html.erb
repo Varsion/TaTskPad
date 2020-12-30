@@ -22,10 +22,11 @@
       <% if logged_in? %>
               <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  YouName
+                  <%= current_user.name %>
                 </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><%= link_to "个人信息", current_user,class: "dropdown-item" %></li>
+                <li><%= link_to "个人信息", users_path,class: "dropdown-item" %></li>
+                <li><%= link_to "我的组织", tenants_path,class: "dropdown-item" %></li>
                 <li><%= link_to "注销登录", logout_path, method: :delete, class: "dropdown-item" %></li>
               </div>
             </div>

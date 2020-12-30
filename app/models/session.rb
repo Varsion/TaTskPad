@@ -4,5 +4,4 @@ class Session < ApplicationRecord
 	belongs_to :tenant
 	has_many :tasks
 
-
 end

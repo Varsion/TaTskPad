@@ -1,0 +1,2 @@
+class TenantMailer < ApplicationMailer
+end

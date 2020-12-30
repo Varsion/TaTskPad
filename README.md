@@ -9,7 +9,7 @@
 
 
 
-开发手记将会持续在我的个人博客上更新[TaTskPad 开发笔记 - 充鸭的手札](https://blog.varsion.cn/?p=1719)
+开发手记将会持续在我的个人博客上更新[TaTskPad 开发笔记 - 充鸭的手札](https://blog.varsion.cn/?tag=tatskpad)
 
 
 
