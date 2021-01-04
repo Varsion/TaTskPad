@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-	attr_accessor :activation_token, :activation_digest
+	attr_accessor :activation_token
 
 	# 邮件规则验证
   	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -27,18 +27,6 @@ class User < ApplicationRecord
 	has_many :sessions
 	# 一个用户通过 会话 拥有 同时属于多个组织
 	has_many :tenants, through: :sessions
-
-  	class << self
-  		# 生成一个用于账号验证的随机令牌
-  		def new_token
-  			SecureRandom.urlsafe_base64
-  		end
-  		# 返回指定字符串的哈希摘要
-	    def digest string
-	      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-	      BCrypt::Password.create(string, cost: cost)
-	    end
-  	end
 	
 
 	# 发送激活邮件
@@ -58,7 +46,7 @@ class User < ApplicationRecord
 
 	  	# 建立邮箱验证token
 	  	def create_token_digest
-		  	self.activation_token = User.new_token
-		  	self.activation_disest = User.digest(activation_token)
+		  	# self.activation_token = User.new_token
+		  	self.activation_disest = digest(new_token)
 	  	end
 end

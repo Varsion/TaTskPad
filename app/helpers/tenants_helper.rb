@@ -7,4 +7,8 @@ module TenantsHelper
 			return false
 		end
 	end
+
+	def invite_url code
+		new_session_url+'?code='+code
+	end
 end
