@@ -35,8 +35,17 @@ class UsersController < ApplicationController
 	end
 
 
-	def verify
-		
+	def verify 
+		email 	= request.GET['email']
+		vercode = request.GET['code']
+
+		@user = User.find_by(email: email)
+		if @user.verify_account vercode
+			flash[:success] = "Account verification succeeded"
+			redirect_to login_path
+		else
+			render 'new'
+		end
 	end
 
 	# 用户个人信息

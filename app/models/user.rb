@@ -38,6 +38,18 @@ class User < ApplicationRecord
 		self.actived
 	end
 
+	# 验证用户邮箱
+	def verify_account code
+
+		if self.activation_disest == code
+			self.update(actived: true)
+		else
+			return false
+		end
+
+		return true
+	end
+
 	private
 		# 使邮箱保持小写
 		def downcase_email
