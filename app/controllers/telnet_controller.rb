@@ -24,7 +24,7 @@ class TelnetController < ApplicationController
 
 	def destroy
 		log_out
-		flash[:success] = "Restore Success"
+		flash[:success] = "Logout Success"
 		redirect_to root_url
 	end
 

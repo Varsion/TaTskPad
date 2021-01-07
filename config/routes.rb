@@ -15,4 +15,6 @@ Rails.application.routes.draw do
     resources :tenants
     resources :sessions
 
+    resources :tasks
+
 end

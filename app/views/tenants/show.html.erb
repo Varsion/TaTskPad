@@ -1,4 +1,17 @@
 <% provide(:title, @tenant.tenant_name) %>
+<div class="col-md-12 col-md-offset-3">
+	<nav class="nav nav-pills nav-justified">
+	  <a class="nav-item nav-link active" href="#">任务看板</a>
+	  <a class="nav-item nav-link" href="#">日历</a>
+	  <a class="nav-item nav-link" href="#">动态</a>
+	  <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">团队管理</a>
+	</nav>
+</div>
+
+<div class="col-md-12">
+	<hr>
+</div>
+
 <div class="col-md-6 col-md-offset-3">
 	<h3>
 		<%= @tenant.tenant_name %>
