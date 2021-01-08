@@ -1,9 +1,13 @@
 class TasksController < ApplicationController
-	def all_tasks
+	def index
 		
 	end
 
 	def new
+		
+	end
+
+	def create
 		
 	end
 

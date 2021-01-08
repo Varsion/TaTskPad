@@ -1,56 +1,16 @@
 <% provide(:title, @tenant.tenant_name) %>
+
+
 <div class="col-md-12 col-md-offset-3">
-	<nav class="nav nav-pills nav-justified">
-	  <a class="nav-item nav-link active" href="#">任务看板</a>
-	  <a class="nav-item nav-link" href="#">日历</a>
-	  <a class="nav-item nav-link" href="#">动态</a>
-	  <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">团队管理</a>
-	</nav>
+
+	<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">新建任务</button>
+
+	<%= render "tasks/index" %>
 </div>
 
-<div class="col-md-12">
-	<hr>
-</div>
+<%= render "tasks/new" %>
 
-<div class="col-md-6 col-md-offset-3">
-	<h3>
-		<%= @tenant.tenant_name %>
-	</h3>
 
-	<% if admin? @tenant.id %>
-		<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#Tenant_code">
-		  邀请新成员
-		</button>
-		<%= link_to "解散该组织", tenant_path, class: "btn btn-danger", method: :delete,
-                                       data: { confirm: "您确定解散该组织?" } %>
-	<% end %>
-
-	<p>
-		租户/组织信息
-	</p>
-</div>
-
-	<!-- Button trigger modal -->
-
-	<!-- Modal -->
-	<div class="modal fade" id="Tenant_code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog-centered">
-		<div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalCenterTitle">邀请新成员</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">×</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-		      	<h3>组织邀请码</h3>
-		      	<p><%= @tenant.invitation_code %></p>
-		      	<h3>组织邀请链接</h3>
-		      	<a href="<%= invite_url @tenant.invitation_code %>"><%= invite_url @tenant.invitation_code %></a>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		      </div>
-		</div>
-	  </div>
-	</div>
+<script>
+	$("#ind-1").addClass("active");
+</script>

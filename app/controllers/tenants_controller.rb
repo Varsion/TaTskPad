@@ -1,4 +1,5 @@
 class TenantsController < ApplicationController
+	layout "tenants_lay" ,except: [:index]
 	before_action :logged_in_user
 	# 组织
 
@@ -54,6 +55,11 @@ class TenantsController < ApplicationController
 			flash[:danger] = "Some error occurred"
 			redirect_to tenants_path
 		end
+	end
+
+
+	def manage
+		@tenant = Tenant.find(params[:id])
 	end
 
 	private

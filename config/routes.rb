@@ -5,16 +5,20 @@ Rails.application.routes.draw do
 	    get  '/contact', to: 'static_pages#contact'
 
 	# 用户登陆及注销
-	get '/login' ,to: 'telnet#new'
-    post '/login' ,to: 'telnet#create'
-    delete '/logout' ,to: 'telnet#destroy'
-    get  '/signup',  to: 'users#new'
-    get '/verify', to: 'users#verify'
+	get '/login' ,      to: 'telnet#new'
+    post '/login' ,     to: 'telnet#create'
+    delete '/logout' ,  to: 'telnet#destroy'
+    get  '/signup',     to: 'users#new'
+    get '/verify',      to: 'users#verify'
 
     resources :users
-    resources :tenants
+    
+    resources :tenants  do
+        resources :tasks
+        member do
+            get 'manage', :manage
+        end
+    end
+
     resources :sessions
-
-    resources :tasks
-
 end

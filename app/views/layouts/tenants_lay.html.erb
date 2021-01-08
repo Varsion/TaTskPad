@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand ml-auto" href="#">
+          <%= @tenant.tenant_name %>
+        </a>
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= current_user.name %>
+                </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><%= link_to "个人信息", users_path,class: "dropdown-item" %></li>
+                <li><%= link_to "我的组织", tenants_path,class: "dropdown-item" %></li>
+                <li><%= link_to "注销登录", logout_path, method: :delete, class: "dropdown-item" %></li>
+              </div>
+            </div>
+      </nav>
+    </header><!-- /header -->
+
+    <div class="container">
+
+      <div class="col-md-12 col-md-offset-3" style="margin-top: 10px">
+        <nav class="nav nav-pills nav-justified">
+          <%= link_to "任务看板", tenant_path,class: "nav-item nav-link", id:"ind-1" %>
+          <a class="nav-item nav-link" id="ind-2" href="#">日历</a>
+          <a class="nav-item nav-link" id="ind-3" href="#">动态</a>
+          <% if admin? @tenant %>
+          <%= link_to "团队管理", manage_tenant_path,class: "nav-item nav-link", id:"ind-4" %>
+          <% end %>
+        </nav>
+      </div>
+
+      <div class="col-md-12">
+        <hr>
+      </div>
+
+      <%= render 'layouts/flash' %>
+      <div class="row">
+          <%= yield %>
+      </div>
+    </div><!-- /container -->
+
+    <%= debug(params) if Rails.env.development? %>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>
+
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_013705) do
+ActiveRecord::Schema.define(version: 2021_01_07_064859) do
 
   create_table "sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "session_status", default: false
@@ -33,7 +33,9 @@ ActiveRecord::Schema.define(version: 2020_12_30_013705) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "session_id"
+    t.bigint "tenant_id"
     t.index ["session_id"], name: "index_tasks_on_session_id"
+    t.index ["tenant_id"], name: "index_tasks_on_tenant_id"
   end
 
   create_table "tenants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -62,4 +64,5 @@ ActiveRecord::Schema.define(version: 2020_12_30_013705) do
   add_foreign_key "sessions", "tenants"
   add_foreign_key "sessions", "users"
   add_foreign_key "tasks", "sessions"
+  add_foreign_key "tasks", "tenants"
 end
