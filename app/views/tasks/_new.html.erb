@@ -9,21 +9,55 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+
+        <%= form_with(url: tasks_path, local: true) do |task_form| %>
+
+          <input type="hidden" name="tenant_id" id="tenant_id" value="<%= @tenant.id %>" >
+
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label class="col-form-label">任务标题:</label>
+            <%= task_form.text_field :title , class:"form-control" %>
           </div>
+
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <label class="col-form-label">任务描述:</label>
+            <%= task_form.text_area :desc , class:"form-control" %>
           </div>
-        </form>
+
+          <div class="form-group">
+            <label class="col-form-label">颜色分类:</label>
+            <%= task_form.select :color, ["Red", "Blue", "Gray", "Green"], class:"form-control" %>
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">开始时间:</label>
+            <input type="date" name="start" id="start">
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">结束时间:</label>
+            <input type="date" name="end" id="end">
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">负责人:</label>
+            <%= task_form.select :session_id, @sessions, class:"form-control" %>
+          </div>
+
+          <div class="form-group">
+            <center>
+              <%= task_form.submit 'Submit', class: "btn btn-primary" %>
+            </center>
+          </div>
+
+        <% end %>
+
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Publish</button>
       </div>
+
     </div>
   </div>
 </div>

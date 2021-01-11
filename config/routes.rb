@@ -14,9 +14,14 @@ Rails.application.routes.draw do
     resources :users
     
     resources :tenants  do
-        resources :tasks
         member do
             get 'manage', :manage
+        end
+    end
+
+    resources :tasks do
+        member do
+            get 'finish', :finish
         end
     end
 

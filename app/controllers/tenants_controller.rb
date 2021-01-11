@@ -28,7 +28,18 @@ class TenantsController < ApplicationController
 	end
 
 	def show
+		# 该组织的信息
 		@tenant = Tenant.find(params[:id])
+		# 组装二维数组 任务分配人选 [["session_id","user_name"], ["session_id","user_name"]...]
+		@sessions = Array.new
+		@tenant.sessions.each do |session|
+			info = [session.user.name, session.id]
+			@sessions << info
+		end
+		
+		# 该组织的任务
+		@tasks = @tenant.tasks
+
 	end
 
 	def edit
@@ -63,16 +74,16 @@ class TenantsController < ApplicationController
 	end
 
 	private
-	# 参数
-	def tenant_params
-		params.require(:tenant).permit(:tenant_name, :desc, :task_start, :task_end)
-	end
+		# 参数
+		def tenant_params
+			params.require(:tenant).permit(:tenant_name, :desc, :task_start, :task_end)
+		end
 
-	def admin?
-		
-	end
-	# 简历组织管理员信息
-	def create_admin tenant
-		tenant.sessions.create(session_status:1, user_id:current_user.id, position:0)
-	end
+		def admin?
+			
+		end
+		# 简历组织管理员信息
+		def create_admin tenant
+			tenant.sessions.create(session_status:1, user_id:current_user.id, position:0)
+		end
 end

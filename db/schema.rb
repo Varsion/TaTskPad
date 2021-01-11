@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_064859) do
+ActiveRecord::Schema.define(version: 2021_01_11_082543) do
 
   create_table "sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "session_status", default: false
@@ -27,13 +27,13 @@ ActiveRecord::Schema.define(version: 2021_01_07_064859) do
     t.string "title"
     t.text "desc"
     t.string "color"
-    t.integer "to"
     t.date "start"
     t.date "end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "session_id"
     t.bigint "tenant_id"
+    t.boolean "status", default: false
     t.index ["session_id"], name: "index_tasks_on_session_id"
     t.index ["tenant_id"], name: "index_tasks_on_tenant_id"
   end

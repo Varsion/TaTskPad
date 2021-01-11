@@ -22,4 +22,11 @@ ActiveStorage.start()
 
 require("jquery")
 import "bootstrap"
-import "minigrid"
+// 仍然对资源组织方式存疑
+// require("minigrid")
+// require("dynamics")
+
+
+// 引入自定义js 查询目录为自定义到的 app/javascripst/ 
+require("test/test")
+
