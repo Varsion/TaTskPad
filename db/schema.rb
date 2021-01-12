@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_082543) do
+ActiveRecord::Schema.define(version: 2021_01_12_021222) do
 
   create_table "sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "session_status", default: false
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 2021_01_11_082543) do
     t.boolean "status", default: true
   end
 
+  create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "action"
+    t.date "time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "session_id"
+    t.bigint "task_id"
+    t.index ["session_id"], name: "index_tweets_on_session_id"
+    t.index ["task_id"], name: "index_tweets_on_task_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "nickname"
@@ -65,4 +76,6 @@ ActiveRecord::Schema.define(version: 2021_01_11_082543) do
   add_foreign_key "sessions", "users"
   add_foreign_key "tasks", "sessions"
   add_foreign_key "tasks", "tenants"
+  add_foreign_key "tweets", "sessions"
+  add_foreign_key "tweets", "tasks"
 end

@@ -22,6 +22,9 @@ ActiveStorage.start()
 
 require("jquery")
 import "bootstrap"
+
+// 瀑布流插件
+import "masonry-layout"
 // 仍然对资源组织方式存疑
 // require("minigrid")
 // require("dynamics")

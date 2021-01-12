@@ -3,7 +3,7 @@
 	    <tr>
 	      <th scope="col">Task Name</th>
 	      <th scope="col">Task Desc</th>
-	      <th scope="col">Color</th>
+	      <th scope="col">Symbol</th>
 	      <th scope="col">Principal</th>
 	      <th scope="col">End Time</th>
 	      <th scope="col">operat</th>
@@ -16,7 +16,7 @@
 		  	<tr>
 		      <td><%= task.title %></td>
 		      <td><%= task.desc %></td>
-		      <td><%= task.color %></td>
+		      <td><a href="" class="badge badge-<%= task.color %>"><%= task.color %></a></td>
 		      <td><%= task.session.user.name %></td>
 		      <td><%= task.end %></td>
 		      <td><%= link_to "完成任务",finish_task_path(task.id), class: 'btn btn-primary' %></td>

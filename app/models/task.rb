@@ -9,6 +9,7 @@ class Task < ApplicationRecord
 
 	private
 		def task_id
+			# 期望使 task_id 有意义
 			self.id = "A ID"
 		end
 end
