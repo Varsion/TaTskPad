@@ -1,0 +1,41 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%= image_tag 'TaTsk_Pad_horiz.png' ,style:"width:200px;" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <%= link_to "主页", root_url, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "关于", "/about", class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "帮助", "/help", class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "联系我们", "/contact", class:"nav-link" %>
+        </li>
+      </ul>
+      <% if logged_in? %>
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= current_user.name %>
+                </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><%= link_to "个人信息", users_path,class: "dropdown-item" %></li>
+                <li><%= link_to "我的组织", tenants_path,class: "dropdown-item" %></li>
+                <li><%= link_to "注销登录", logout_path, method: :delete, class: "dropdown-item" %></li>
+              </div>
+            </div>
+      <% else %>
+            <div>
+              <%= link_to "Log in", login_path, class:"btn btn-primary" %>
+              <%= link_to "Sing Up", signup_path, class:"btn btn-light" %>
+            </div>
+      <% end %>
+    </div>
+  </nav>
+</header><!-- /header -->

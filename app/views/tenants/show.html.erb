@@ -1,0 +1,16 @@
+<% provide(:title, @tenant.tenant_name) %>
+
+
+<div class="col-md-12 col-md-offset-3">
+
+	<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">新建任务</button>
+
+	<%= render "tasks/index" %>
+</div>
+
+<%= render "tasks/new" %>
+
+
+<script>
+	$("#ind-1").addClass("active");
+</script>

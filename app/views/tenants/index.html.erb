@@ -1,0 +1,33 @@
+<% provide(:title, "Tenants") %>
+<div class="col-md-6 col-md-offset-3">
+	<div id="title">
+		<h1>我的组织</h1>
+		<%= link_to "新建组织", new_tenant_path, class: "btn btn-outline-primary" %>
+	</div>
+
+	<div id="group" style="margin-top: 10px">
+		<% @tenants.each do |n| %>
+			<% if n.status %>
+				<div class="card">
+					<div class="card-body">
+		    			<h5 class="card-title">
+		    				<%= n.tenant_name %>
+		    			</h5>
+		    			<%= link_to "Enter this organization" , tenant_path(n.id) %>
+		  			</div>
+				</div>
+			<% else %>
+				<div class="card">
+					<div class="card-body">
+		    			<h5 class="card-title">
+		    				<s>
+		    					<%= n.tenant_name %>
+		    				</s>
+		    			</h5>
+		    			<a style="color: red">The organization has been dissolved</a>
+		  			</div>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>
