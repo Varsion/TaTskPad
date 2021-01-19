@@ -1,5 +1,5 @@
 class TenantsController < ApplicationController
-	layout "tenants_lay" ,except: [:index]
+	layout "tenants_lay" ,except: [:index, :new]
 	before_action :logged_in_user
 	# 组织
 
